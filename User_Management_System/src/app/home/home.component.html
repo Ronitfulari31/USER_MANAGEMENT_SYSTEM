@@ -1,0 +1,33 @@
+<mat-sidenav-container class="home-container">
+  <!-- Sidebar -->
+ <mat-sidenav #sidenav mode="side" [(opened)]="isSidebarOpen" class="home-sidenav">
+  <mat-nav-list>
+
+    <p routerLink="/user/list" class="nav-item">
+      View Users
+    </p>
+
+    <br>
+
+    <p routerLink="/user/create" class="nav-item">
+      + Add New User
+    </p>
+
+  </mat-nav-list>
+</mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>User Management Home</span>
+    </mat-toolbar>
+
+    <div class="home-content">
+      <h2>Welcome to the User Management System</h2>
+      <p>This application lets you create, view, and manage users.</p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

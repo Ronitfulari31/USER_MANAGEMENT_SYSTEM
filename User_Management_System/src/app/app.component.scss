@@ -1,0 +1,73 @@
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 40px;
+  font-weight: 400;
+}
+.mat-icon{
+    font-size: 60px;
+    color: #ba005c;
+    height: 54px;
+    width: 50px;
+}
+.app-title {
+  margin-left: 12px;
+}
+
+.main-content {
+  padding: 24px;
+} 
+
+
+.app-container {
+  height: 100vh;
+}
+
+.app-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 20px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.toolbar-icon {
+  margin-right: 8px;
+}
+
+.main-content {
+  padding: 16px;
+}
+
+/* Optional responsive hide button */
+.hide-on-desktop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  mat-sidenav {
+    width: 200px;
+  }
+
+  .hide-on-desktop {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-toolbar {
+    font-size: 18px;
+  }
+  
+  .app-title {
+    font-size: 16px;
+  }
+}

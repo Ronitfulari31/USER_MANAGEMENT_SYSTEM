@@ -1,0 +1,21 @@
+<mat-card *ngIf="user">
+  <mat-card-title>
+    <mat-icon>person</mat-icon> {{ user.fullName }}
+  </mat-card-title>
+  <mat-card-content>
+    <p><mat-icon>email</mat-icon> <strong>Email:</strong> {{ user.email }}</p>
+    <p><mat-icon>phone</mat-icon> <strong>Phone:</strong> {{ user.phone }}</p>
+    <p><mat-icon>cake</mat-icon> <strong>Date of Birth:</strong> {{ user.dateOfBirth | date:'dd-MM-yyyy' }}</p>
+    <p><mat-icon>wc</mat-icon> <strong>Gender:</strong> {{ user.gender }}</p>
+    <p><mat-icon>business</mat-icon> <strong>Department:</strong> {{ user.department }}</p>
+    <p><mat-icon>work</mat-icon> <strong>Position:</strong> {{ user.position }}</p>
+    <p><mat-icon>build</mat-icon> <strong>Skills:</strong> {{ user.skills.join(', ') }}</p>
+    <p><mat-icon>short_text</mat-icon> <strong>Bio:</strong> {{ user.bio }}</p>
+    <p><mat-icon>payments</mat-icon> <strong>Salary:</strong> {{ user.salary }}</p>
+    <p><mat-icon>public</mat-icon> <strong>Country:</strong> {{ user.country }}</p>
+    <p><mat-icon>home</mat-icon> <strong>Address:</strong> {{ user.address }}</p>
+    <p><mat-icon>pin_drop</mat-icon> <strong>Zip Code:</strong> {{ user.zipCode }}</p>
+    <p><mat-icon>toggle_on</mat-icon> <strong>Status:</strong> {{ user.status }}</p>
+    <p><mat-icon>calendar_today</mat-icon> <strong>Start Date:</strong> {{ user.startDate | date:'dd-MM-yyyy' }}</p>
+  </mat-card-content>
+</mat-card>

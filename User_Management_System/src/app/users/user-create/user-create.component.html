@@ -1,0 +1,163 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <!-- Step 1: Personal Information -->
+  <mat-step [stepControl]="personalInfo">
+    <form [formGroup]="personalInfo">
+      <ng-template matStepLabel>Personal Information</ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="dateOfBirth" [matDatepicker]="dob" />
+        <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+        <mat-datepicker #dob></mat-datepicker>
+      </mat-form-field>
+
+      <mat-radio-group formControlName="gender">
+        <label>Gender</label><br />
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+
+      <div>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="!userForm.get('personalInfo')?.valid"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 2: Job Information -->
+  <mat-step [stepControl]="jobInfo">
+    <form [formGroup]="jobInfo">
+      <ng-template matStepLabel>Job Information</ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="department">
+          <mat-option *ngFor="let dept of departments" [value]="dept">{{
+            dept
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Position</mat-label>
+        <input matInput formControlName="position" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input matInput formControlName="salary" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          formControlName="jobstartDate"
+          [matDatepicker]="jobStartPicker"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="jobStartPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #jobStartPicker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Add Skills -->
+      <div>
+        <label>Skills</label>
+        <input #skillInput />
+        <button mat-button type="button" (click)="addSkill(skillInput)">
+          Add
+        </button>
+        <div *ngFor="let skill of skills.controls; index as i">
+          {{ skill.value }}
+          <button mat-button type="button" (click)="removeSkill(i)">
+            Remove
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-button
+          matStepperNext
+          [disabled]="!userForm.get('jobInfo')?.valid"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- Step 3: Additional Info -->
+  <mat-step [stepControl]="additionalInfo">
+    <form [formGroup]="additionalInfo" (ngSubmit)="onSubmit()">
+      <ng-template matStepLabel>Additional Information</ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let country of countries" [value]="country">{{
+            country
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="zipCode" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Bio</mat-label>
+        <textarea matInput formControlName="bio"></textarea>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!userForm.get('additionalInfo')?.valid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
