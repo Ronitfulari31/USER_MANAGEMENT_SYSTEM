@@ -72,7 +72,7 @@ Features include routing, form validation, data persistence via local storage, a
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/user-management-app.git
+   git clone https://github.com/Ronitfulari31/user-management-app.git
    cd user-management-app
 2. Install dependencies:
 npm install
